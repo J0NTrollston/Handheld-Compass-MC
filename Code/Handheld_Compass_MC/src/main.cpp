@@ -1,18 +1,24 @@
+/*--------------------------------------------------------------------
+Name:   Brandon Ramos
+Date:   7/26/2025
+File:   Minecraft Compass main file
+
+Doc:  
+--------------------------------------------------------------------*/
 #include <Arduino.h>
+#include "LED.h"
+#include "Magnetometer.h"
 
-// put function declarations here:
-int myFunction(int, int);
-
-void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+void setup() { 
+  setupLED();
+  setupMagnetometer();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-}
+void loop() { 
+  //get compass heading and use the LEDs to display north
+  float heading = getMagnetometerData(false);
+  compassHead(heading);
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  //refresh every 0.2ms
+  delay(200);
 }
