@@ -1,0 +1,57 @@
+Net Status Report
+Filename     : C:\Users\Public\Documents\Altium\Minecraft_Compass_LED_Board\PCB1.PcbDoc
+Date         : 7/31/2025
+Time         : 8:59:04 PM
+Time Elapsed : 00:00:00
+
+Nets, Layer, Length
+    Din, Signal Layers Only, 0mm
+    GND, Signal Layers Only, 0mm
+    NetU0_2, Signal Layers Only, 0mm
+    NetU10_2, Signal Layers Only, 0mm
+    NetU11_2, Signal Layers Only, 0mm
+    NetU12_2, Signal Layers Only, 0mm
+    NetU13_2, Signal Layers Only, 0mm
+    NetU14_2, Signal Layers Only, 0mm
+    NetU15_2, Signal Layers Only, 0mm
+    NetU16_2, Signal Layers Only, 0mm
+    NetU17_2, Signal Layers Only, 0mm
+    NetU18_2, Signal Layers Only, 0mm
+    NetU19_2, Signal Layers Only, 0mm
+    NetU1_2, Signal Layers Only, 0mm
+    NetU20_2, Signal Layers Only, 0mm
+    NetU21_2, Signal Layers Only, 0mm
+    NetU22_2, Signal Layers Only, 0mm
+    NetU23_2, Signal Layers Only, 0mm
+    NetU24_2, Signal Layers Only, 0mm
+    NetU25_2, Signal Layers Only, 0mm
+    NetU26_2, Signal Layers Only, 0mm
+    NetU27_2, Signal Layers Only, 0mm
+    NetU28_2, Signal Layers Only, 0mm
+    NetU29_2, Signal Layers Only, 0mm
+    NetU2_2, Signal Layers Only, 0mm
+    NetU30_2, Signal Layers Only, 0mm
+    NetU31_2, Signal Layers Only, 0mm
+    NetU32_2, Signal Layers Only, 0mm
+    NetU33_2, Signal Layers Only, 0mm
+    NetU34_2, Signal Layers Only, 0mm
+    NetU35_2, Signal Layers Only, 0mm
+    NetU36_2, Signal Layers Only, 0mm
+    NetU37_2, Signal Layers Only, 0mm
+    NetU38_2, Signal Layers Only, 0mm
+    NetU39_2, Signal Layers Only, 0mm
+    NetU3_2, Signal Layers Only, 0mm
+    NetU40_2, Signal Layers Only, 0mm
+    NetU41_2, Signal Layers Only, 0mm
+    NetU42_2, Signal Layers Only, 0mm
+    NetU43_2, Signal Layers Only, 0mm
+    NetU44_2, Signal Layers Only, 0mm
+    NetU45_2, Signal Layers Only, 0mm
+    NetU4_2, Signal Layers Only, 0mm
+    NetU5_2, Signal Layers Only, 0mm
+    NetU6_2, Signal Layers Only, 0mm
+    NetU7_2, Signal Layers Only, 0mm
+    NetU8_2, Signal Layers Only, 0mm
+    NetU9_2, Signal Layers Only, 0mm
+    VCC, Signal Layers Only, 0mm
+count : 49
