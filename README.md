@@ -14,9 +14,20 @@ The spacing of the LEDs was not too big of an issue for the prototype but would 
 Later when I get a working design, I would like to create a custom PCB instead of using an LED matrix due to the limited sizes they come in. 
 While searching for addressable LEDs, I did see some libraries I could use and shortly found one that would work for me. Lastly, the issue with mounting the LED strip was to get them in the right place in the compass. This will be explained in detail later.
 
-
 ![LED Strip](/Images/LED_Strip_Amazon.jpg)
 
+Now that I had decided on an LED strip for the prototype, I now needed to find out the size of the compass. Shown below is a blank MC compass which is 14 pixels wide and 12 pixels tall. 
+When measuring out the center spacing between each LED on the strip, this came out to 16.5mm which would give me a total width of 16.5mm x 14 pixels = 231mm (9 inches) across. This would obviously not fit in one hand and would be too big. Instead, I would fold the strip to being the LEDs closer together. 
+
+![Blank Minecraft Compass](/Images/Minecraft_Compass_Blank.jpg)
+
+By folding the space between each LED, I could decrease the center spacing between each LED and thus each pixel could be smaller. I decided to use a spacing of 10mm which means each pixel would be 10mm squares giving a total width of 10mm x 14 pixels = 140mm (5.5 inches) across. 
+This was still quite large but would be small enough for the prototype. I had the LEDs and a decent size for the compass in mind, now I had to determine how the display was going to work with 3D printing filament.
+
+## 3D Printing
+
+
+![LED Strip Folded Close Together](/Images/LED_Strip_Folded_Together.jpg)
 
 Although I had initially considered buying an LED matrix, I went with the LED strip for a couple of reasons. 
 
