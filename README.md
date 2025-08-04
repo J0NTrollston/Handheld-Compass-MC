@@ -15,7 +15,7 @@ Later when I get a working design, I would like to create a custom PCB instead o
 While searching for addressable LEDs, I did see some libraries I could use and shortly found one that would work for me. Lastly, the issue with mounting the LED strip was to get them in the right place in the compass. This will be explained in detail later.
 
 
-![LED Strip](/Images/LED_Strip.jpg)
+![LED Strip](/Images/LED_Strip_Amazon.jpg)
 
 
 Although I had initially considered buying an LED matrix, I went with the LED strip for a couple of reasons. 
@@ -37,3 +37,5 @@ Tools that I used:
 Tools that you will need to make this yourself: 
  3D Printer
  
+ Overall BOM:
+ - [LED Strip from Amazon](https://a.co/d/37Ocjif) $13.99
