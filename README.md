@@ -1,4 +1,4 @@
-# Working MC Compass (Working on README)
+# Working MC Compass (Workin on README)
 This was a fun side project that allowed me to learn more about 3D printing and how I could create functional designs. The idea to create this project came to me when learning how to create your own multi-colored prints. 
 Although this is more of a creative than practical design, I decided to create a tutorial for others to follow and build their own. 
 
@@ -24,12 +24,29 @@ When measuring out the center spacing between each LED on the strip, this came o
 By folding the space between each LED, I could decrease the center spacing between each LED and thus each pixel could be smaller. I decided to use a spacing of 10mm which means each pixel would be 10mm squares giving a total width of 10mm x 14 pixels = 140mm (5.5 inches) across. 
 This was still quite large but would be small enough for the prototype. I had the LEDs and a decent size for the compass in mind, now I had to determine how the display was going to work with 3D printing filament.
 
-## 3D Printing
-
-
 ![LED Strip Folded Close Together](/Images/LED_Strip_Folded_Together.jpg)
 
-Although I had initially considered buying an LED matrix, I went with the LED strip for a couple of reasons. 
+## 3D Printing
+
+There are some translucent filaments out there that can be used to see the light from the LED through the compass. For my design, I used PLA Matte and printed a very thin layer so the light could pass through. I did this because I did not wanted to only use PLA Matte and 4 primary colors.
+The P1S Bambu Printer allows for small layer heights, playing with these layer heights for the firstt few layers allowed for more or less light to pass through. I played with layer heights between 0.1mm to 1.0mm by increasing steps of 0.1mm each iteration. 
+I found that 0.4mm was a good thickness as to let enough light to pass through but not too think to become fragile when handled. As the only place where the design needed to be 0.4mm in thickness was where the LEDs displayed the compass needle, the rest of the area around could be increased in thickness. 
+
+Couple of considerations before we go into the compass design. There are 51 pixels in the compass that change colors for the moving needle but I only use 47 because 4 of those pixels are the black border and not the lighter gray color meaning that 0.4mm is too thick for the LEDs to shine through.
+The other note is that many libraries for controlling the LEDs intend for the LED matrix to be a rectangle, since I am only using the required amount of LEDs I will not have a rectangular matrix which will be shown later. This is not an issue however since I treat my LEDs like an array and display my own display.
+
+### Inkscape
+Special note on multicolor filament is that Inkscape is helpful when converting pictures to stl format. I found this really helpful video from [Dark Side Designs]{https://www.youtube.com/watch?v=wVLm3hICILs) in which they explain how to use an image when creating an stl file. This is helpful when needing to print in different colors.
+Following the video, I was able to create the face of the compass which would let me set each section to a different color by making them their own Components in Fusion 360. The sections can be seen in the image below.
+
+![Inkscape to STL Compass](/Images/Inkscape_to_Fusion360.jpg)
+
+With the face of the compass now made, we need to make the mount for the LEDs as well as a way to properly diffuse the light throught the front of the compass. Given a spacing of 10mm as well as thick walls between each LED provides clear display with the LEDs being 5mm away from the thin compass face. 
+Below are 2 images showing the front and back of the compass with the top removed. This shows the LED mount where each LED is placed in the square hole. For the LED strip to be fixed in place, I had to use E6000 Adhesive which took a painful amount of time to place. 
+Also by bending the LED strip, I did have some connection issues where at some places the metal creased and caused connection issues. Later I will use mounting holes with the LED Array PCB to solve this issue.
+
+![Compass Top Removed](/Images/Compass_Body_Top_Removed.jpg)
+![Compass Top Removed (Back)](/Images/Compass_Body_Top_Removed_Back.jpg)
 
 
 
@@ -37,6 +54,7 @@ Although I had initially considered buying an LED matrix, I went with the LED st
 - Resources
  Image of blank compasss: https://minecraft.fandom.com/wiki/Compass?file=Compass_%28texture%29_JE1_BE1.png
  GIF of compass needle: https://minecraft.fandom.com/wiki/Compass?file=Compass_Proctex_Needle_Points.gif
+ Image to STL YouTube: https://www.youtube.com/watch?v=wVLm3hICILs
  
 
 Tools that I used: 
@@ -50,3 +68,4 @@ Tools that you will need to make this yourself:
  
  Overall BOM:
  - [LED Strip from Amazon](https://a.co/d/37Ocjif) $13.99
+ - [PLA Matte for White, Charcoal, Nardo Gray and Ash Gray](https://us.store.bambulab.com/products/pla-matte) $59.96
