@@ -1,11 +1,40 @@
 # Working MC Compass (Workin on README)
+If you are looking to build this design here is the documentation and all necessary informtion for [Building Your Own]() (link not yet created).
+## Table of Contents (TBA)
+1. [Objectives or Purpose](#objectives-or-purpose)
+
+
+2. [Preliminary Design](#preliminary-design)
+ * [Code](#code)
+3. [Software flow chart or algorithms](#software-flow-chart-or-algorithms)
+ * [Pseudocode](#pseudocode)
+4. [Hardware schematic](#hardware-schematic)
+5. [Well-formatted code](#well-formatted-code)
+6. [Debugging](#debugging)
+7. [Testing methodology or results](#testing-methodology-or-results)
+8. [Answers to Lab Questions](#answers-to-lab-questions)
+9. [Observations and Conclusions](#observations-and-conclusions)
+10. [Documentation](#documentation)
+
+
+### Objectives or Purpose 
 This was a fun side project that allowed me to learn more about 3D printing and how I could create functional designs. The idea to create this project came to me when learning how to create your own multi-colored prints. 
 Although this is more of a creative than practical design, I decided to create a tutorial for others to follow and build their own. 
 
 Thoughout this tutorial, I will explain my thought process and give details on how certain things came to be. When I am finished with this tutorial, most of the inforamtion will not be required for building your own. 
 I believe that in the end, you will only need the 3d print file, PCB files and other circuits and just skip my explanation if you want to.
 
-## Table of Contents (TBA)
+
+
+
+
+
+
+#### Hardware
+
+#### CAD
+
+#### PCB
 
 ## Getting Started
 Starting this project, the first thing that I needed to figure out was how I was going to control the LEDs. I had no experience with using addressable LEDs and started looking at a couple of options. I saw some LED strips with 4 contacts and others with 3. The LED strips with only 3 contacts had Power, Ground and the address signal. 
@@ -26,6 +55,8 @@ This was still quite large but would be small enough for the prototype. I had th
 
 ![LED Strip Folded Close Together](/Images/LED_Strip_Folded_Together.jpg)
 
+Another component that I had added was the Magnetometer which would use Earth's magnetic field to display north on the compass. This was quite simple and only needed I2C communication. It came with mounting holes for later versions of my design but would be glued on for now. 
+
 ## 3D Printing
 
 There are some translucent filaments out there that can be used to see the light from the LED through the compass. For my design, I used PLA Matte and printed a very thin layer so the light could pass through. I did this because I did not wanted to only use PLA Matte and 4 primary colors.
@@ -36,7 +67,7 @@ Couple of considerations before we go into the compass design. There are 51 pixe
 The other note is that many libraries for controlling the LEDs intend for the LED matrix to be a rectangle, since I am only using the required amount of LEDs I will not have a rectangular matrix which will be shown later. This is not an issue however since I treat my LEDs like an array and display my own display.
 
 ### Inkscape
-Special note on multicolor filament is that Inkscape is helpful when converting pictures to stl format. I found this really helpful video from [Dark Side Designs]{https://www.youtube.com/watch?v=wVLm3hICILs) in which they explain how to use an image when creating an stl file. This is helpful when needing to print in different colors.
+Special note on multicolor filament is that Inkscape is helpful when converting pictures to stl format. I found this really helpful video from [Dark Side Designs](https://www.youtube.com/watch?v=wVLm3hICILs) in which they explain how to use an image when creating an stl file. This is helpful when needing to print in different colors.
 Following the video, I was able to create the face of the compass which would let me set each section to a different color by making them their own Components in Fusion 360. The sections can be seen in the image below.
 
 ![Inkscape to STL Compass](/Images/Inkscape_to_Fusion360.jpg)
@@ -48,7 +79,23 @@ Also by bending the LED strip, I did have some connection issues where at some p
 ![Compass Top Removed](/Images/Compass_Body_Top_Removed.jpg)
 ![Compass Top Removed (Back)](/Images/Compass_Body_Top_Removed_Back.jpg)
 
+## Code 
 
+### Add readme to Code folder?
+Once the mount for the LEDs have been created, I started to work on the code to verify the library is compatible for the LEDs I received. Given the WS2812 LED I used <FastLED.h> which I had used to display each direction I wanted. 
+When reviewing the [LED Code](https://github.com/J0NTrollston/Handheld-Compass-MC/blob/main/Code/Handheld_Compass_MC/src/LED.cpp) written, please note that most of the code is to simply display which direction the compass needle was pointint to. It is very simple but includes many direction choices. 
+
+For the [Magnetometer Code](https://github.com/J0NTrollston/Handheld-Compass-MC/blob/main/Code/Handheld_Compass_MC/src/Magnetometer.cpp), I had used the <Adafruit_MMC56x3.h> library which did most of the work for me. Using the raw data from the component, I could calculate the heading and return it to my LED function. 
+
+### Calibration
+Note that when using a component like a Magnetometer, you will need to calibrate it. These are referred top as "Soft Iron" and "Hard Iron" calibrations. For my compass, I opted to only do a 2 axis calibration by keeping the compass level with the X and Y axis. 
+
+### Add calibration screenshots?
+
+
+
+
+## Hardware
 
 
 - Resources
@@ -62,6 +109,7 @@ Tools that I used:
  Inkscape for taking a picture of the compass and converting it to a sketch in Fusion 360
  Altium Designer for the PCB design
  Bambu Lab P1S printer with AMS
+ VSCode
 
 Tools that you will need to make this yourself: 
  3D Printer
@@ -69,3 +117,4 @@ Tools that you will need to make this yourself:
  Overall BOM:
  - [LED Strip from Amazon](https://a.co/d/37Ocjif) $13.99
  - [PLA Matte for White, Charcoal, Nardo Gray and Ash Gray](https://us.store.bambulab.com/products/pla-matte) $59.96
+ - [Magnetometer](https://www.digikey.com/short/5crqvzjf) $5.95
