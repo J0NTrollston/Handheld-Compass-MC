@@ -1,42 +1,25 @@
 # Working MC Compass (Workin on README)
 If you are looking to build this design here is the documentation and all necessary informtion for [Building Your Own]() (link not yet created).
+
 ## Table of Contents (TBA)
 1. [Objectives or Purpose](#objectives-or-purpose)
-
-
 2. [Preliminary Design](#preliminary-design)
- * [Code](#code)
-3. [Software flow chart or algorithms](#software-flow-chart-or-algorithms)
- * [Pseudocode](#pseudocode)
-4. [Hardware schematic](#hardware-schematic)
-5. [Well-formatted code](#well-formatted-code)
+3. [CAD](#cad)
+4. [Hardware](#hardware)
+5. [Software](#software)
 6. [Debugging](#debugging)
 7. [Testing methodology or results](#testing-methodology-or-results)
-8. [Answers to Lab Questions](#answers-to-lab-questions)
-9. [Observations and Conclusions](#observations-and-conclusions)
-10. [Documentation](#documentation)
+8. [Conclusions](#conclusions)
+9. [Documentation](#documentation)
 
 
 ### Objectives or Purpose 
-This was a fun side project that allowed me to learn more about 3D printing and how I could create functional designs. The idea to create this project came to me when learning how to create your own multi-colored prints. 
-Although this is more of a creative than practical design, I decided to create a tutorial for others to follow and build their own. 
+This design take the compass from the game Minecraft and places it into your hands. By creating the shell of the compass to picking the internal components, I provide documentation on how to build it yourself. 
+Most of this document will go over the process in designing the compass and is not the document for building your own. Please see the top of this document for the link on how to build your own. 
+This compass has the full functionality shown in the game as well as a rechargible lipo battery through USB-C and a swith to power off when not in use. At this time, there is an LED to show when the battery is fully charged, however I have not implemented a way to show this outside the enclosure. 
+Other compoents include a microcontroller to display a compass needle using an LED array, magnetometer and boost converter.
 
-Thoughout this tutorial, I will explain my thought process and give details on how certain things came to be. When I am finished with this tutorial, most of the inforamtion will not be required for building your own. 
-I believe that in the end, you will only need the 3d print file, PCB files and other circuits and just skip my explanation if you want to.
-
-
-
-
-
-
-
-#### Hardware
-
-#### CAD
-
-#### PCB
-
-## Getting Started
+### Preliminary Design
 Starting this project, the first thing that I needed to figure out was how I was going to control the LEDs. I had no experience with using addressable LEDs and started looking at a couple of options. I saw some LED strips with 4 contacts and others with 3. The LED strips with only 3 contacts had Power, Ground and the address signal. 
 This was all that I needed and decided to get a roll to use. I did see other LED strips which had the LEDs a little close together, but they were either more expensive or were the 4 contact variant. Some considerations when choosign the LED strip were the LED spacing, support for the LED using pre-existing libraries and how to mount.
 The spacing of the LEDs was not too big of an issue for the prototype but would have to be folded closer together to reduce the size of the compass' overall width. This will be shown later when preparing the LEDs for installation. 
@@ -57,8 +40,9 @@ This was still quite large but would be small enough for the prototype. I had th
 
 Another component that I had added was the Magnetometer which would use Earth's magnetic field to display north on the compass. This was quite simple and only needed I2C communication. It came with mounting holes for later versions of my design but would be glued on for now. 
 
-## 3D Printing
 
+### CAD
+#### 3D Printing
 There are some translucent filaments out there that can be used to see the light from the LED through the compass. For my design, I used PLA Matte and printed a very thin layer so the light could pass through. I did this because I did not wanted to only use PLA Matte and 4 primary colors.
 The P1S Bambu Printer allows for small layer heights, playing with these layer heights for the firstt few layers allowed for more or less light to pass through. I played with layer heights between 0.1mm to 1.0mm by increasing steps of 0.1mm each iteration. 
 I found that 0.4mm was a good thickness as to let enough light to pass through but not too think to become fragile when handled. As the only place where the design needed to be 0.4mm in thickness was where the LEDs displayed the compass needle, the rest of the area around could be increased in thickness. 
@@ -66,7 +50,7 @@ I found that 0.4mm was a good thickness as to let enough light to pass through b
 Couple of considerations before we go into the compass design. There are 51 pixels in the compass that change colors for the moving needle but I only use 47 because 4 of those pixels are the black border and not the lighter gray color meaning that 0.4mm is too thick for the LEDs to shine through.
 The other note is that many libraries for controlling the LEDs intend for the LED matrix to be a rectangle, since I am only using the required amount of LEDs I will not have a rectangular matrix which will be shown later. This is not an issue however since I treat my LEDs like an array and display my own display.
 
-### Inkscape
+##### Inkscape
 Special note on multicolor filament is that Inkscape is helpful when converting pictures to stl format. I found this really helpful video from [Dark Side Designs](https://www.youtube.com/watch?v=wVLm3hICILs) in which they explain how to use an image when creating an stl file. This is helpful when needing to print in different colors.
 Following the video, I was able to create the face of the compass which would let me set each section to a different color by making them their own Components in Fusion 360. The sections can be seen in the image below.
 
@@ -79,42 +63,39 @@ Also by bending the LED strip, I did have some connection issues where at some p
 ![Compass Top Removed](/Images/Compass_Body_Top_Removed.jpg)
 ![Compass Top Removed (Back)](/Images/Compass_Body_Top_Removed_Back.jpg)
 
-## Code 
-
-### Add readme to Code folder?
+### Hardware
+### Software
+#### Add readme to Code folder?
 Once the mount for the LEDs have been created, I started to work on the code to verify the library is compatible for the LEDs I received. Given the WS2812 LED I used <FastLED.h> which I had used to display each direction I wanted. 
 When reviewing the [LED Code](https://github.com/J0NTrollston/Handheld-Compass-MC/blob/main/Code/Handheld_Compass_MC/src/LED.cpp) written, please note that most of the code is to simply display which direction the compass needle was pointint to. It is very simple but includes many direction choices. 
 
 For the [Magnetometer Code](https://github.com/J0NTrollston/Handheld-Compass-MC/blob/main/Code/Handheld_Compass_MC/src/Magnetometer.cpp), I had used the <Adafruit_MMC56x3.h> library which did most of the work for me. Using the raw data from the component, I could calculate the heading and return it to my LED function. 
 
-### Calibration
+#### Calibration
 Note that when using a component like a Magnetometer, you will need to calibrate it. These are referred top as "Soft Iron" and "Hard Iron" calibrations. For my compass, I opted to only do a 2 axis calibration by keeping the compass level with the X and Y axis. 
 
-### Add calibration screenshots?
+#### Add calibration screenshots?
 
+### Debugging
 
+### Testing methodology or results
 
+### Conclusion
 
-## Hardware
-
-
-- Resources
- Image of blank compasss: https://minecraft.fandom.com/wiki/Compass?file=Compass_%28texture%29_JE1_BE1.png
- GIF of compass needle: https://minecraft.fandom.com/wiki/Compass?file=Compass_Proctex_Needle_Points.gif
- Image to STL YouTube: https://www.youtube.com/watch?v=wVLm3hICILs
+### Documentation
+#### Sources
+- Image of blank compasss: https://minecraft.fandom.com/wiki/Compass?file=Compass_%28texture%29_JE1_BE1.png
+- GIF of compass needle: https://minecraft.fandom.com/wiki/Compass?file=Compass_Proctex_Needle_Points.gif
+- Image to STL YouTube: https://www.youtube.com/watch?v=wVLm3hICILs
  
-
-Tools that I used: 
- Fusion 360 for the compass design
- Inkscape for taking a picture of the compass and converting it to a sketch in Fusion 360
- Altium Designer for the PCB design
- Bambu Lab P1S printer with AMS
- VSCode
-
-Tools that you will need to make this yourself: 
- 3D Printer
+#### Tools used
+- Fusion 360
+- Inkscape
+- Altium Designer
+- Bambu Lab P1S with AMS
+- VSCode
  
- Overall BOM:
+#### Overall BOM:
  - [LED Strip from Amazon](https://a.co/d/37Ocjif) $13.99
- - [PLA Matte for White, Charcoal, Nardo Gray and Ash Gray](https://us.store.bambulab.com/products/pla-matte) $59.96
+ - [PLA Matte for White, Charcoal, Nardo Gray and Ash Gray](https://us.store.bambulab.com/products/pla-matte) $59.96 (Assuming you have to buy new rolls)
  - [Magnetometer](https://www.digikey.com/short/5crqvzjf) $5.95
